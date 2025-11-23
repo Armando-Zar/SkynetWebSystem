@@ -29,7 +29,7 @@ public class IndexModelo implements Serializable{
             Conexion conexion = new Conexion();
             Connection conn = conexion.connect();
             
-            String sql = "select login_name, id_rol, id_supervisor, id_tecnico, estado from skynet.usuario where login_name = '"+user+"' and password = '"+pass+"'";
+            String sql = "select login_name, id_rol, id_supervisor, id_tecnico, estado from railway.usuario where login_name = '"+user+"' and password = '"+pass+"'";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             
