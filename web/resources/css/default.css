@@ -1,0 +1,36 @@
+body {
+    background-color: #0d0d0d;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: white;  
+    margin: 10px;
+}
+
+h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-size:  35px;
+    margin: 5px;
+    padding: 0px;
+    color: #ffffff;
+    text-align: center;
+}
+
+h2 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-size:  15px;
+    font-weight: inherit;
+    margin: 5px;
+    padding: 0px;
+    color: #ffffff;
+    text-align: center;
+}
+
+p  {
+ margin: 5px auto;
+ padding: 1px;
+ }
+ 
+.imageStyle{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

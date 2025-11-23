@@ -1,0 +1,461 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+<!-- REGLA NAVEGACIÓN INDEX de IndexModelo  -->    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>administrador</from-outcome>
+            <to-view-id>/menuAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>supervisor</from-outcome>
+            <to-view-id>/menuSupervisor.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>tecnico</from-outcome>
+            <to-view-id>/menuTecnico.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>usuarioInactivo</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>      
+        <navigation-case>
+            <from-outcome>usuarioIncorrecto</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>            
+    </navigation-rule> 
+
+<!-- REGLA NAVEGACIÓN PARA ROL ADMINISTRADOR 15 ITEMS EN SWITCH CASE -->  
+    <navigation-rule>
+        <from-view-id>/menuAdministrador.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>salir</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevoCliente</from-outcome>
+            <to-view-id>/registroCliente.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaCliente</from-outcome>
+            <to-view-id>/consultaCliente.xhtml</to-view-id>
+        </navigation-case>       
+        <navigation-case>
+            <from-outcome>nuevaVisita</from-outcome>
+            <to-view-id>/registroVisita.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaVisita</from-outcome>
+            <to-view-id>/consultaVisita.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevoAdministrador</from-outcome>
+            <to-view-id>/registroAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaAdministrador</from-outcome>
+            <to-view-id>/consultaAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevoSupervisor</from-outcome>
+            <to-view-id>/registroSupervisor.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaSupervisor</from-outcome>
+            <to-view-id>/consultaSupervisor.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevoTecnico</from-outcome>
+            <to-view-id>/registroTecnico.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaTecnico</from-outcome>
+            <to-view-id>/consultaTecnico.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevoRol</from-outcome>
+            <to-view-id>/registroRol.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaRol</from-outcome>
+            <to-view-id>/consultaRol.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevoUsuario</from-outcome>
+            <to-view-id>/registroUsuario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaUsuario</from-outcome>
+            <to-view-id>/consultaUsuario.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+<!-- REGLA NAVEGACIÓN PARA ROL SUPERVISOR 3 ITEMS EN SWITCH CASE -->      
+    <navigation-rule>
+        <from-view-id>/menuSupervisor.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>salir</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevaVisita</from-outcome>
+            <to-view-id>/registroVisita.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaVisita</from-outcome>
+            <to-view-id>/consultaVisita.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+
+<!-- REGLA NAVEGACIÓN PARA ROL TECNICO 2 ITEMS EN SWITCH CASE -->      
+    <navigation-rule>
+        <from-view-id>/menuTecnico.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>salir</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultaVisita</from-outcome>
+            <to-view-id>/consultaVisitaTecnico.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+
+<!-- REGLA NAVEGACIÓN ROLES INDEX -->   
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>menuAdministrador</from-outcome>
+            <to-view-id>/menuAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>menuSupervisor</from-outcome>
+            <to-view-id>/menuSupervisor.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>menuTecnico</from-outcome>
+            <to-view-id>/menuTecnico.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+<!-- VERIFICAR PARA ELIMINAR ESTA NAVEGACIÓN, SE DEJA COMENTADA -->   
+    <navigation-rule>
+        <from-view-id>/consultaCliente.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>menuAdministrador</from-outcome>
+            <to-view-id>/menuAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>menuSupervisor</from-outcome>
+            <to-view-id>/menuSupervisor.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+<!-- MANAGE BEANS DE INICIO Y UTILIDADES -->   
+    <managed-bean>
+        <description>bean que gestiona el login</description>
+        <managed-bean-name>indexControlador</managed-bean-name>
+        <managed-bean-class>Controlador.IndexControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el login del usuario en la BD</description>
+        <managed-bean-name>indexModelo</managed-bean-name>
+        <managed-bean-class>Modelo.IndexModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona la conexion a la BD</description>
+        <managed-bean-name>conexion</managed-bean-name>
+        <managed-bean-class>Utilidades.Conexion</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona los mensajes</description>
+        <managed-bean-name>mensajes</managed-bean-name>
+        <managed-bean-class>Utilidades.Mensajes</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el menu dock</description>
+        <managed-bean-name>dock</managed-bean-name>
+        <managed-bean-class>Utilidades.Dock</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona los catalogos</description>
+        <managed-bean-name>catalogos</managed-bean-name>
+        <managed-bean-class>Utilidades.Catalogos</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>    
+    
+<!-- MANAGE BEANS DE LOS MENU DE LOS ROLES (VAN EN LOS MENU.XHTML)-->             
+    <managed-bean>
+        <description>Bean que gestiona el menu Administrador</description>
+        <managed-bean-name>menuAdministradorControlador</managed-bean-name>
+        <managed-bean-class>Controlador.MenuAdministradorControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el menu del Supervisor</description>
+        <managed-bean-name>menuSupervisorControlador</managed-bean-name>
+        <managed-bean-class>Controlador.MenuSupervisorControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>    
+    <managed-bean>
+        <description>Bean que gestiona el menu del Tecnico</description>
+        <managed-bean-name>menuTecnicoControlador</managed-bean-name>
+        <managed-bean-class>Controlador.MenuTecnicoControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>    
+    
+<!-- MANAGE BEANS REGISTRO DE CLIENTE  1-->      
+    <managed-bean>
+        <description>Bean que gestiona el registro del cliente</description>
+        <managed-bean-name>registroClienteControlador</managed-bean-name>
+        <managed-bean-class>Controlador.RegistroClienteControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la estructura de un cliente</description>
+        <managed-bean-name>cliente</managed-bean-name>
+        <managed-bean-class>Pojos.Cliente</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el modelo del cliente</description>
+        <managed-bean-name>registroClienteModelo</managed-bean-name>
+        <managed-bean-class>Modelo.RegistroUsuarioModelo</managed-bean-class>
+    
+        <managed-bean-scope>view</managed-bean-scope></managed-bean>
+
+<!-- MANAGE BEANS CONSULTA DE CLIENTE 1-->          
+    <managed-bean>        
+        <description>Bean que gestiona la logica de la consulta del cliente</description>
+        <managed-bean-name>consultaClienteControlador</managed-bean-name>
+        <managed-bean-class>Controlador.ConsultaClienteControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean Modelo que gestiona la consulta del cliente</description>
+        <managed-bean-name>consultaClienteModelo</managed-bean-name>
+        <managed-bean-class>Modelo.ConsultaClienteModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+
+ <!-- MANAGE BEANS REGISTRO DE ADMINISTRRADOR  2-->    
+ <!-- PARA HACER EL LLAMADO DESDE LA VISTA, SIN LOS BEANS NO SE PUDIESE LLAMAR EL MÉTODO DESDE EL XHTML-->   
+    <managed-bean>
+        <description>Bean que gestiona el registro de administrador</description>
+        <managed-bean-name>registroAdministradorControlador</managed-bean-name>
+        <managed-bean-class>Controlador.RegistroAdministradorControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la estructura de un administrador</description>
+        <managed-bean-name>administrador</managed-bean-name>
+        <managed-bean-class>Pojos.Administrador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el modelo del administrador</description>
+        <managed-bean-name>registroAdministradorModelo</managed-bean-name>
+        <managed-bean-class>Modelo.RegistroAdministradorModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+<!-- MANAGE BEANS CONSULTA DE ADMINISTRADOR 2-->              
+    <managed-bean>        
+        <description>Bean que gestiona la logica de la consulta del administrador</description>
+        <managed-bean-name>consultaAdministradorControlador</managed-bean-name>
+        <managed-bean-class>Controlador.ConsultaAdministradorControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean Modelo que gestiona la consulta del administrador</description>
+        <managed-bean-name>consultaAdministradorModelo</managed-bean-name>
+        <managed-bean-class>Modelo.ConsultaAdministradorModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean> 
+
+
+ <!-- MANAGE BEANS REGISTRO DE SUPERVISOR  3-->  
+ <!-- PARA HACER EL LLAMADO DESDE LA VISTA, SIN LOS BEANS NO SE PUDIESE LLAMAR EL MÉTODO DESDE EL XHTML-->      
+    <managed-bean>
+        <description>Bean que gestiona el registro de supervisor</description>
+        <managed-bean-name>registroSupervisorControlador</managed-bean-name>
+        <managed-bean-class>Controlador.RegistroSupervisorControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la estructura de un supervisor</description>
+        <managed-bean-name>supervisor</managed-bean-name>
+        <managed-bean-class>Pojos.Supervisor</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el modelo del supervisor</description>
+        <managed-bean-name>registroSupervisorModelo</managed-bean-name>
+        <managed-bean-class>Modelo.RegistroSupervisorModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+<!-- MANAGE BEANS CONSULTA DE SUPERVISOR 3-->           
+    <managed-bean>        
+        <description>Bean que gestiona la logica de la consulta del supervisor</description>
+        <managed-bean-name>consultaSupervisorControlador</managed-bean-name>
+        <managed-bean-class>Controlador.ConsultaSupervisorControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean Modelo que gestiona la consulta del supervisor</description>
+        <managed-bean-name>consultaSupervisorModelo</managed-bean-name>
+        <managed-bean-class>Modelo.ConsultaSupervisorModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean> 
+
+ <!-- MANAGE BEANS REGISTRO DE TECNICO  3-->      
+ <!-- PARA HACER EL LLAMADO DESDE LA VISTA, SIN LOS BEANS NO SE PUDIESE LLAMAR EL MÉTODO DESDE EL XHTML-->   
+    <managed-bean>
+        <description>Bean que gestiona el registro de tecnico</description>
+        <managed-bean-name>registroTecnicoControlador</managed-bean-name>
+        <managed-bean-class>Controlador.RegistroTecnicoControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la estructura de un supervisor</description>
+        <managed-bean-name>tecnico</managed-bean-name>
+        <managed-bean-class>Pojos.Tecnico</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el modelo del tecnico</description>
+        <managed-bean-name>registroTecnicoModelo</managed-bean-name>
+        <managed-bean-class>Modelo.RegistroTecnicoModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+<!-- MANAGE BEANS CONSULTA DE TECNICO 4-->          
+    <managed-bean>        
+        <description>Bean que gestiona la logica de la consulta del tecnico</description>
+        <managed-bean-name>consultaTecnicoControlador</managed-bean-name>
+        <managed-bean-class>Controlador.ConsultaTecnicoControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean Modelo que gestiona la consulta del tecnico</description>
+        <managed-bean-name>consultaTecnicoModelo</managed-bean-name>
+        <managed-bean-class>Modelo.ConsultaTecnicoModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean> 
+
+    
+ <!-- MANAGE BEANS REGISTRO DE ROL  5-->      
+    <managed-bean>
+        <description>Bean que gestiona el registro de rol</description>
+        <managed-bean-name>registroRolControlador</managed-bean-name>
+        <managed-bean-class>Controlador.RegistroRolControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la estructura de un rol</description>
+        <managed-bean-name>rol</managed-bean-name>
+        <managed-bean-class>Pojos.Rol</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el modelo del rol</description>
+        <managed-bean-name>registroRolModelo</managed-bean-name>
+        <managed-bean-class>Modelo.RegistroRolModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+<!-- MANAGE BEANS CONSULTA DE ROL 5-->          
+    <managed-bean>        
+        <description>Bean que gestiona la logica de la consulta del rol</description>
+        <managed-bean-name>consultaRolControlador</managed-bean-name>
+        <managed-bean-class>Controlador.ConsultaRolControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean Modelo que gestiona la consulta del rol</description>
+        <managed-bean-name>consultaRolModelo</managed-bean-name>
+        <managed-bean-class>Modelo.ConsultaRolModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean> 
+    
+    
+  <!-- MANAGE BEANS REGISTRO DE USUARIO  6-->      
+    <managed-bean>
+        <description>Bean que gestiona el registro de usuario</description>
+        <managed-bean-name>registroUsuarioControlador</managed-bean-name>
+        <managed-bean-class>Controlador.RegistroUsuarioControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la estructura de un usuario</description>
+        <managed-bean-name>usuario</managed-bean-name>
+        <managed-bean-class>Pojos.Usuario</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el modelo del usuario</description>
+        <managed-bean-name>registroUsuarioModelo</managed-bean-name>
+        <managed-bean-class>Modelo.RegistroUsuarioModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+<!-- MANAGE BEANS CONSULTA DE USUARIO 6-->          
+    <managed-bean>        
+        <description>Bean que gestiona la logica de la consulta del usuario</description>
+        <managed-bean-name>consultaUsuarioControlador</managed-bean-name>
+        <managed-bean-class>Controlador.ConsultaUsuarioControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean Modelo que gestiona la consulta del usuario</description>
+        <managed-bean-name>consultaUsuarioModelo</managed-bean-name>
+        <managed-bean-class>Modelo.ConsultaUsuarioModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>    
+    
+    
+  <!-- MANAGE BEANS REGISTRO DE VISITA  7-->      
+    <managed-bean>
+        <description>Bean que gestiona el registro de visita</description>
+        <managed-bean-name>registroVisitaControlador</managed-bean-name>
+        <managed-bean-class>Controlador.RegistroVisitaControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la estructura de un visita</description>
+        <managed-bean-name>visita</managed-bean-name>
+        <managed-bean-class>Pojos.Visita</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean que gestiona el modelo del visita</description>
+        <managed-bean-name>registroVisitaModelo</managed-bean-name>
+        <managed-bean-class>Modelo.RegistroVisitaModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+<!-- MANAGE BEANS CONSULTA DE VISITA 7-->          
+    <managed-bean>        
+        <description>Bean que gestiona la logica de la consulta del visita</description>
+        <managed-bean-name>consultaVisitaControlador</managed-bean-name>
+        <managed-bean-class>Controlador.ConsultaVisitaControlador</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean Modelo que gestiona la consulta del visita</description>
+        <managed-bean-name>consultaVisitaModelo</managed-bean-name>
+        <managed-bean-class>Modelo.ConsultaVisitaModelo</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>     
+                        
+</faces-config>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Template/Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<style type="text/css">
+    .ui-splitbutton {
+        margin-right: .5rem;
+    }
+</style>    
+    
+    <ui:define name="content">
+        <h:form id="registroAdministradorform" style="background-color: #0d0d0d;">
+            <p:growl id="growl" showDetail="true" sticky="true" />
+            <p:dock position="top">
+                <p:menuitem title="Menú Principal" icon="./Imagenes/home.png" action="#{dock.navegacionDock()}"/>
+            </p:dock>
+            <center>
+
+                <p:graphicImage style="margin-top: 5px;" url="./Imagenes/registros.png" width="900px" height="300px" />
+
+                <table cellspacing="10px">
+                    <tr>
+                        <td>
+                            <p:outputLabel value="Nombre Administrador: " />
+                        </td>
+                        <td>
+                            <p:inputText value="#{registroAdministradorControlador.nombre}" /> 
+                        </td>  
+                        <td>
+                            <p:outputLabel value="DPI: " />
+                        </td>
+                        <td>
+                            <p:inputText value="#{registroAdministradorControlador.dpi}" /> 
+                        </td>                        
+                    </tr>
+                    
+                    <tr>                                        
+                        <td>
+                            <p:outputLabel value="Telefono: " />
+                        </td>
+                        <td>
+                            <p:inputText value="#{registroAdministradorControlador.telefono}" /> 
+                        </td>
+                        <td>
+                            <p:outputLabel value="Email: " />
+                        </td>
+                        <td>
+                            <p:inputText value="#{registroAdministradorControlador.email}" /> 
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="7" align="center">
+                            <p:commandButton icon="ui-icon-pencil" value="Registrar Administrador" 
+                                             action="#{registroAdministradorControlador.registrarAdministrador()}" 
+                                             update="registroAdministradorform"/>
+                        </td>
+                    </tr>
+                </table>
+
+            </center>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

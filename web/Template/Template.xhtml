@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="./resources/css/default.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="./resources/css/cssLayout.css" type="text/css" media="all" />
+        <title>Skynet Web System</title>
+    </h:head>
+
+    <h:body>
+
+        <div style ="background-color: #0d0d0d;" id="top">
+            <strong><center><ui:insert name="top"><h1>Bienvenido al Sistema Skynet</h1></ui:insert></center></strong>
+                <div class="user-role-display">
+                    <span class="texto-label">Usuario:</span> 
+                    <span class="user-rol-style">#{consultaVisitaControlador.usuarioLogueado}</span> <br/>
+
+                    <span class="texto-label">Rol:</span> 
+                    <span class="user-rol-style">#{consultaVisitaControlador.rolDescripcion}</span>
+                </div>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div style="background-color: #0d0d0d;" id="bottom">
+            <h3> <strong><center><ui:insert name="bottom"> SKYNET S.A. </ui:insert></center></strong></h3>
+        </div>
+
+    </h:body>
+
+</html>

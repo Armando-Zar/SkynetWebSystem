@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./Template/Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form> 
+                <p:growl id="messages"/>
+                <p:menubar>
+                    <p:menuitem value="Salir" icon="ui-icon-power" action="#{menuAdministradorControlador.navegacionMenu(1)}" />
+
+                    <p:submenu label="Gestión de Clientes" icon="ui-icon-person">
+                        <p:menuitem value="Nuevo Cliente" icon="ui-icon-plus" action="#{menuAdministradorControlador.navegacionMenu(2)}" />
+                        <p:separator />
+                        <p:menuitem value="Consultar Clientes" icon="ui-icon-search" action="#{menuAdministradorControlador.navegacionMenu(3)}" />                      
+                    </p:submenu>
+
+                    <p:submenu label="Gestión de Visitas" icon="ui-icon-suitcase">
+                        <p:menuitem value="Nueva Visita" icon="ui-icon-cart" action="#{menuAdministradorControlador.navegacionMenu(4)}" />
+                        <p:separator />
+                        <p:menuitem value="Consultar Visitas" icon="ui-icon-search" action="#{menuAdministradorControlador.navegacionMenu(5)}" /> 
+                    </p:submenu>
+                                      
+                    <p:submenu label="Otras Gestiones de Registro" icon="ui-icon-plus">
+                       <p:menuitem value="Registrar Administrador" icon="ui-icon-plus" action="#{menuAdministradorControlador.navegacionMenu(6)}" />   
+                        <p:separator />
+                       <p:menuitem value="Registrar Supervisor" icon="ui-icon-plus" action="#{menuAdministradorControlador.navegacionMenu(8)}" />
+                       <p:separator />
+                       <p:menuitem value="Registrar Técnico" icon="ui-icon-plus" action="#{menuAdministradorControlador.navegacionMenu(10)}" />                         
+                        <p:separator />
+                       <p:menuitem value="Registrar Usuario" icon="ui-icon-plus" action="#{menuAdministradorControlador.navegacionMenu(14)}" />                        
+                    </p:submenu>           
+
+                    <p:submenu label="Otras Gestiones de Consulta" icon="ui-icon-search">
+                       <p:menuitem value="Consultar Administradores" icon="ui-icon-search" action="#{menuAdministradorControlador.navegacionMenu(7)}" />   
+                        <p:separator />
+                       <p:menuitem value="Consultar Supervisores" icon="ui-icon-search" action="#{menuAdministradorControlador.navegacionMenu(9)}" /> 
+                       <p:separator />
+                       <p:menuitem value="Consultar Técnicos" icon="ui-icon-search" action="#{menuAdministradorControlador.navegacionMenu(11)}" />                   
+                       <p:separator />
+                       <p:menuitem value="Consultar Usuarios" icon="ui-icon-search" action="#{menuAdministradorControlador.navegacionMenu(15)}" />                        
+                    </p:submenu>                       
+                                 
+                                 
+                </p:menubar>
+                <p:graphicImage styleClass="imagen-principal" alt="Imagen principal" url="./Imagenes/principal.jpg" />
+        </h:form>
+    </ui:define>
+
+</ui:composition>

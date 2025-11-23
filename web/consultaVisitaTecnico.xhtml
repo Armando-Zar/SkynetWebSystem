@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Template/Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form id="consultaVisitaForm" styleClass="form-scroll" >
+            <p:growl id="growl" showDetail="true" sticky="true" />
+            <p:dock position="top">
+                <p:menuitem title="Menu Principal" icon="./Imagenes/home.png" action="#{dock.navegacionDock()}"/>
+            </p:dock>
+            <center>
+                <p:graphicImage url="./Imagenes/consultaVisita.jpg" width="600px" height="275px" style="margin-top: 20px"/>
+                
+<!-- para apliar o reducir el panel de la consulta -->
+                <p:panel id="pnlConsultaVisita" style="background-color: #0d0d0d; width: 1750px; ">         
+                    <table cellspacing="10px">
+                        <tr>
+                            <td>
+                                <p:outputLabel value="Id Visita * "/>
+                            </td>
+                            <td>
+                                <p:inputText value="#{consultaVisitaControlador.id_visita}"/>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2" align="center">
+                                <p:commandButton value="Consultar Visistas en General" icon="ui-icon-search" action="#{consultaVisitaControlador.consultarVisitaGeneral()}" update="consultaVisitaForm"/>
+                            </td> 
+                            <td colspan="2" align="center">
+                                <p:commandButton value="Visitas de HOY" icon="ui-icon-calendar"  action="#{consultaVisitaControlador.consultarVisitasHoy()}" update="consultaVisitaForm"/>
+                                <p:outputLabel id="totalHoy" value="Total para HOY: #{consultaVisitaControlador.totalVisitasHoy}"  style="font-weight:bold; margin-left:10px; color:#00eaff;" />
+                            </td>                             
+                            <td colspan="2" align="center">
+                                <p:commandButton value="Reporte Visita a Cliente" icon="ui-icon-note" action="#{consultaVisitaControlador.generarReporteVisita()}" update="consultaVisitaForm"/>
+                            </td>   
+                        </tr>
+                    </table>
+                    
+                    <p:dataTable id="tbConsultaVisita" scrollable="true" scrollHeight="400" var="visita" rowKey="#{visita}" value="#{consultaVisitaControlador.listaVisitas}" rows="9" paginator="true" paginatorPosition="bottom"
+                                 emptyMessage="No hay registros" selectionMode="single" selection="#{consultaVisitaControlador.visitaSeleccionada}" >
+                        <p:column headerText="ID Visita" width="20" style="text-align:center;" >
+                            <h:outputText value="#{visita.id_visita}"/>
+                        </p:column>
+
+                        <p:column headerText="Cliente" width="150">
+                            <h:outputText value="#{visita.nombre_cliente}"/>
+                        </p:column>
+
+                        <p:column headerText="Falla Reportada" width="150">
+                            <h:outputText value="#{visita.falla_reportada}"/>
+                        </p:column>                        
+                        
+                        <p:column headerText="Supervisor" width="110">
+                            <h:outputText value="#{visita.nombre_supervisor}"/>
+                        </p:column>
+
+                        <p:column headerText="Técnico" width="110" >
+                            <h:outputText value="#{visita.nombre_tecnico}"/>
+                        </p:column>
+
+                        <p:column headerText="Fecha de Visita" width="80" style="text-align:center;" >
+                            <h:outputText value="#{visita.fecha_programada}"/>
+                        </p:column>
+
+                        <p:column headerText="Estado" width="80" >
+                            <h:outputText value="#{visita.descripcion_estado}"/>
+                        </p:column>
+
+                        <p:column headerText="Latitud" width="70" style="text-align:center;">
+                            <h:outputText value="#{visita.latitud_cliente}"/>
+                        </p:column>
+
+                        <p:column headerText="Longitud" width="70" style="text-align:center;">
+                            <h:outputText value="#{visita.longitud_cliente}"/>
+                        </p:column>  
+                        
+                        <p:column headerText="Ingreso" width="60" style="text-align:center;">
+                            <h:outputText value="#{visita.ingreso}"/>
+                        </p:column>
+
+                        <p:column headerText="Egreso" width="60" style="text-align:center;">
+                            <h:outputText value="#{visita.egreso}"/>
+                        </p:column>                        
+
+                        <p:column headerText="Nota" width="60" >
+                            <h:outputText value="#{visita.nota}"/>
+                        </p:column>
+                        
+                        <p:column headerText="|ACTUALIZAR DATOS|" width="80" style="text-align:center;">
+                            <p:commandButton icon="ui-icon-refresh" action="#{consultaVisitaControlador.mostrarVisitaSeleccionada()}" update="consultaVisitaForm" />
+                        </p:column>
+                    </p:dataTable>
+                    
+                    <p:dialog style="background-color: #0d0d0d;" header="Actualizar datos de la Visita" widgetVar="dlgActualizarVisita" modal="true" height="570" width="1000" resizable="false" showEffect="explode" hideEffect="explode">
+                        <center>
+                            <p:graphicImage url="./Imagenes/update.png" width="600px" height="275px" />
+                            <table align="center" cellspacing="10px">
+                                <tr>
+                                    <td>
+                                        <p:outputLabel value="ID Visita: " />
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaVisitaControlador.id_visita}" style="width:40px;" disabled="true" />
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <p:outputLabel value="Cliente: " />
+                                    </td>
+                                    <td>
+                                        <p:selectOneMenu value="#{consultaVisitaControlador.clienteActualizar}" style="width:190px" disabled="true" >         
+                                        <f:selectItem itemLabel="Seleccione Cliente" itemValue="-1" />
+                                        <f:selectItems value="#{registroVisitaControlador.listaClientes}" />
+                                        </p:selectOneMenu>    
+                                    </td>
+                                    <td>
+                                        <p:outputLabel value="Fecha de Visita: "/>
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaVisitaControlador.fecha_programadaActualizar}" disabled="true" type="date" id="start" style="width:180px" />
+                                    </td>
+                                    <td>
+                                        <p:outputLabel value="Estado"/>
+                                    </td>
+                                    <td>
+                                        <p:selectOneMenu value="#{consultaVisitaControlador.estadoActualizar}" style="width:175px" > 
+                                        <f:selectItem itemLabel="Seleccione Estado" itemValue="-1" />
+                                        <f:selectItems value="#{registroVisitaControlador.listaEstados}" />
+                                        </p:selectOneMenu>
+                                    </td>
+                                </tr>
+                                                                  
+                                <tr>
+                                    <td>
+                                        <p:outputLabel value="Supervisor: "/>
+                                    </td>
+                                    <td>
+                                        <p:selectOneMenu value="#{consultaVisitaControlador.supervisorActualizar}" style="width:180px" disabled="true" >
+                                           <f:selectItem itemLabel="Seleccione Sup." itemValue="-1" />
+                                           <f:selectItems value="#{registroVisitaControlador.listaSupervisor}" />
+                                        </p:selectOneMenu>  
+                                    </td>
+                                    <td>
+                                        <p:outputLabel value="Ingreso: "/>
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaVisitaControlador.ingresoActualizar}" type="time" style="width:190px" />
+                                    </td>
+                                    <td>
+                                        <p:outputLabel value="Egreso: "/>
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaVisitaControlador.egresoActualizar}" type="time" style="width:190px" />
+                                    </td>                                     
+                                </tr>
+
+                                <tr>  
+                                    <td>
+                                        <p:outputLabel value="Falla Reportada: " />
+                                    </td>
+                                    <td>
+                                        <p:inputTextarea value="#{consultaVisitaControlador.falla_reportadaActualizar}" disabled="true" styleClass="input-texto-grande" autoResize="true" placeholder="Escribe aquí..." />
+                                    </td>                                     
+                                    <td>
+                                        <p:outputLabel value="Nota: "/>
+                                    </td>
+                                    <td>
+                                        <p:inputTextarea value="#{consultaVisitaControlador.notaActualizar}" styleClass="input-texto-grande" autoResize="true" placeholder="Escribe aquí..." />
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="6" align="center">
+                                        <p:commandButton value="Actualizar Visita" icon="ui-icon-refresh" action="#{consultaVisitaControlador.actualizarVisita()}" update="consultaVisitaForm" />                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                    </p:dialog>                
+                    
+                    <p:dialog style="background-color: #0d0d0d;" header="#{consultaVisitaControlador.nameReporte}" widgetVar="dlgReporteVisita" modal="true" height="450" width="800" resizable="false" showEffect="explode" hideEffect="explode"> 
+                        <p:graphicImage url="./Imagenes/logo.png" width="450px" height="175px" />    
+                        <object id="pdfReporte" type="application/pdf" data="#{consultaVisitaControlador.urlPdfFile}" height="100%" width="100%"></object>
+                    </p:dialog>
+                </p:panel> 
+            </center>
+        </h:form>
+    </ui:define>
+</ui:composition>

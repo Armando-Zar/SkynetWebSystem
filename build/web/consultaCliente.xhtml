@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Template/Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form id="consultaClienteForm" styleClass="form-scroll" >
+            <p:growl id="growl" showDetail="true" sticky="true" />
+            <p:dock position="top">
+                <p:menuitem title="Menu Principal" icon="./Imagenes/home.png" action="#{dock.navegacionDock()}"/>
+            </p:dock>
+            <center>
+                <p:graphicImage url="./Imagenes/consultacl.png" width="900px" height="275px" style="margin-top: 20px"/>
+                <p:panel id="pnlConsultaCliente" style="background-color: #0d0d0d; width: 1200px; ">
+                    <table cellspacing="10px">
+                        <tr>
+                            <td>
+                                <p:outputLabel value="Id Cliente * "/>
+                            </td>
+                            <td>
+                                <p:inputText value="#{consultaClienteControlador.id_cliente}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <p:commandButton value="Consultar Cliente por ID" icon="ui-icon-search" action="#{consultaClienteControlador.consultarClienteId_Cliente()}" update="consultaClienteForm"/>
+                            </td>
+                            <td colspan="2" align="center">
+                                <p:commandButton value="Consultar Clientes en General" icon="ui-icon-search" action="#{consultaClienteControlador.consultarClienteGeneral()}" update="consultaClienteForm"/>
+                            </td>                            
+                        </tr>
+                    </table>
+                    <p:dataTable id="tbConsultaCliente" scrollable="true" scrollHeight="400" var="cliente" rowKey="#{cliente}" value="#{consultaClienteControlador.listaClientes}" rows="10" paginator="true" paginatorPosition="bottom"
+                                 emptyMessage="No hay registros" selectionMode="single" selection="#{consultaClienteControlador.clienteSeleccionado}" >
+                        <p:column headerText="ID Cliente" width="20" style="text-align:center;">
+                            <h:outputText value="#{cliente.id_cliente}"/>
+                        </p:column>
+
+                        <p:column headerText="Nombre completo" width="100">
+                            <h:outputText value="#{cliente.nombre}"/>
+                        </p:column>
+
+                        <p:column headerText="Direccion" width="100">
+                            <h:outputText value="#{cliente.direccion}"/>
+                        </p:column>
+
+                        <p:column headerText="Telefono" width="40" style="text-align:center;">
+                            <h:outputText value="#{cliente.telefono}"/>
+                        </p:column>
+
+                        <p:column headerText="Email" width="100">
+                            <h:outputText value="#{cliente.email}"/>
+                        </p:column>
+
+                        <p:column headerText="Latitud" width="60" style="text-align:center;">
+                            <h:outputText value="#{cliente.lat}"/>
+                        </p:column>
+
+                        <p:column headerText="Longitud" width="60" style="text-align:center;">
+                            <h:outputText value="#{cliente.lng}"/>
+                        </p:column>
+
+                        <p:column headerText="|ACTUALIZAR DATOS|" width="50" style="text-align:center;">
+                            <p:commandButton icon="ui-icon-refresh" action="#{consultaClienteControlador.mostrarClienteSeleccionado()}" update="consultaClienteForm"/>
+                        </p:column>
+                    </p:dataTable>
+                    
+                    <p:dialog style="background-color: #0d0d0d;" header="Actualizar datos del cliente" widgetVar="dlgActualizarCliente" modal="true" height="475" width="900" resizable="false" showEffect="explode" hideEffect="explode">
+                        <center>
+                            <p:graphicImage url="./Imagenes/update.png" width="600px" height="275px" />
+                            <table align="center" cellspacing="10px">
+                                <tr>
+                                    <td>
+                                        <p:outputLabel value="ID Cliente" />
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaClienteControlador.id_cliente}" style="width:40px;" disabled="true"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p:outputLabel value="Nombre" />
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaClienteControlador.nombreActualizar}" />
+                                    </td>
+                                    <td>
+                                        <p:outputLabel value="Direccion" />
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaClienteControlador.direccionActualizar}" />
+                                    </td>
+                                    <td>
+                                        <p:outputLabel value="Telefono"/>
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaClienteControlador.telefonoActualizar}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p:outputLabel value="Email"/>
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaClienteControlador.emailActualizar}" />
+                                    </td>
+                                    <td>
+                                        <p:outputLabel value="Latitud"/>
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaClienteControlador.latActualizar}" disabled="true" />
+                                    </td>                                    
+                                    <td>
+                                        <p:outputLabel value="Longitud"/>
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{consultaClienteControlador.lngActualizar}" disabled="true" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" align="center">
+                                        <p:commandButton value="Actualizar" icon="ui-icon-refresh" action="#{consultaClienteControlador.actualizarCliente()}" update="consultaClienteForm"/>                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                    </p:dialog>
+                    <p:dialog style="background-color: #0d0d0d;" header="#{consultaClienteControlador.nameReporte}" widgetVar="dlgReporteCliente" modal="true" height="450" width="800" resizable="false" showEffect="explode" hideEffect="explode"> 
+                        <p:graphicImage url="./Imagenes/logo.png" width="450px" height="175px" />    
+                        <object id="pdfReporte" type="application/pdf" data="#{consultaClienteControlador.urlPdfFile}" heigth="100%" width="100%"></object>
+                    </p:dialog>
+                </p:panel>
+            </center>
+        </h:form>
+    </ui:define>
+</ui:composition>

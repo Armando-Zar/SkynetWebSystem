@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Template/Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<style type="text/css">
+    .ui-splitbutton {
+        margin-right: .5rem;
+    }
+</style>    
+    
+    <ui:define name="content">
+        <h:form id="registroVisitaform" style="background-color: #0d0d0d;">
+            <p:growl id="growl" showDetail="true" sticky="true" />
+            <p:dock position="top">
+                <p:menuitem title="Menú Principal" icon="./Imagenes/home.png" action="#{dock.navegacionDock()}"/>
+            </p:dock>
+            <center>
+                <p:graphicImage style="margin-top: 5px;" url="./Imagenes/visitaTecnica.png" width="900px" height="300px" />
+                <table cellspacing="10px">
+                    <tr>
+                        <td>
+                            <p:outputLabel value="Cliente: " />
+                        </td>
+                        <td>
+                            <p:selectOneMenu value="#{registroVisitaControlador.cliente}" style="width:180px" >  
+                                <p:ajax event="change" listener="#{registroVisitaControlador.cargarDireccion()}" update="comboDireccion comboEmail comboLat comboLng" />
+                                <p:ajax event="change" listener="#{registroVisitaControlador.cargarEmail()}" update="comboDireccion comboEmail comboLat comboLng" />
+                                <p:ajax event="change" listener="#{registroVisitaControlador.cargarLatitud()}" update="comboDireccion comboEmail comboLat comboLng" />
+                                <p:ajax event="change" listener="#{registroVisitaControlador.cargarLongitud()}" update="comboDireccion comboEmail comboLat comboLng" />
+                                <f:selectItem itemLabel="Seleccione Cliente" itemValue="-1" />
+                                <f:selectItems value="#{registroVisitaControlador.listaClientes}" />
+                            </p:selectOneMenu>                            
+                        </td>
+                        <td>
+                            <p:outputLabel value="Direccion: " />
+                        </td>
+                        <td>
+                            <p:selectOneMenu id="comboDireccion" value="#{registroVisitaControlador.direccion}" style="width:180px" > 
+                            <f:selectItem itemLabel="Seleccione Drección" itemValue="-1" />
+                            <f:selectItems value="#{registroVisitaControlador.listaDireccion}" />
+                            </p:selectOneMenu>
+                        </td>                        
+                        <td>
+                            <p:outputLabel value="Supervisor: " />
+                        </td>
+                        <td>
+                            <p:selectOneMenu value="#{registroVisitaControlador.supervisor}" style="width:180px" >
+                                <p:ajax listener="#{registroVisitaControlador.cargarTecnico()}" update="idTecnico" />
+                                <f:selectItem itemLabel="Seleccione Sup." itemValue="-1" />
+                                <f:selectItems value="#{registroVisitaControlador.listaSupervisor}" />
+                            </p:selectOneMenu>
+                        </td>
+                        <td>
+                            <p:outputLabel value="Técnico: " />
+                        </td>
+                        <td>
+                            <p:selectOneMenu id="idTecnico" value="#{registroVisitaControlador.tecnico}" style="width:180px" >
+                                <f:selectItem itemLabel="Seleccione Tec." itemValue="-1" />
+                                <f:selectItems value="#{registroVisitaControlador.listaTecnico}" />
+                            </p:selectOneMenu>
+                        </td>                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <p:outputLabel value="Fecha programada: " />
+                        </td>
+                        <td>
+                            <p:inputText value="#{registroVisitaControlador.fecha_programada}" type="date" id="start" /> 
+                        </td>                                          
+                        <td>
+                            <p:outputLabel value="Estado: " />
+                        </td>
+                        <td>
+                            <p:selectOneMenu value="#{registroVisitaControlador.estado}" style="width:180px" > 
+                            <f:selectItem itemLabel="Seleccione Estado" itemValue="-1" />
+                            <f:selectItems value="#{registroVisitaControlador.listaEstados}" />
+                            </p:selectOneMenu>
+                        </td>
+                        <td>
+                            <p:outputLabel value="Email: " />
+                        </td>
+                        <td>
+                            <p:selectOneMenu id="comboEmail" value="#{registroVisitaControlador.email}" style="width:180px" > 
+                            <f:selectItem itemLabel="Seleccione Email" itemValue="-1" />
+                            <f:selectItems value="#{registroVisitaControlador.listaEmail}" />
+                            </p:selectOneMenu>
+                        </td>                         
+                        <td>
+                            <p:outputLabel value="Nota: " />
+                        </td>
+                        <td>
+                            <p:inputTextarea value="#{registroVisitaControlador.nota}" styleClass="input-texto-grande" autoResize="true" placeholder="Escribe aquí..." />
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <p:outputLabel value="Latitud: " />
+                        </td>
+                        <td>
+                            <p:selectOneMenu id="comboLat" value="#{registroVisitaControlador.latitud}" style="width:180px" > 
+                            <f:selectItem itemLabel="Seleccione Lat." itemValue="-1" />
+                            <f:selectItems value="#{registroVisitaControlador.listaLatitud}" />
+                            </p:selectOneMenu>
+                        </td>  
+                        <td>
+                            <p:outputLabel value="Longitud " />
+                        </td>
+                        <td>
+                            <p:selectOneMenu id="comboLng" value="#{registroVisitaControlador.longitud}" style="width:180px" > 
+                            <f:selectItem itemLabel="Seleccione Long." itemValue="-1" />
+                            <f:selectItems value="#{registroVisitaControlador.listaLongitud}" />
+                            </p:selectOneMenu>
+                        </td>  
+                        <td>
+                            <p:outputLabel value="Falla reportada: " />
+                        </td>
+                        <td>
+                            <p:inputTextarea value="#{registroVisitaControlador.falla_reportada}" styleClass="input-texto-grande" autoResize="true" placeholder="Escribe aquí..." /> 
+                        </td>                                          
+                    </tr>                    
+
+                    <tr>
+                        <td colspan="7" align="center">
+                            <p:commandButton icon="ui-icon-pencil" value="Registrar Visita" action="#{registroVisitaControlador.registrarVisita()}" update="registroVisitaform"/>
+                        </td>
+                    </tr>
+                </table>
+            </center>    
+        </h:form>
+    </ui:define>
+
+</ui:composition>

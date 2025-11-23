@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Clientes" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" isIgnorePagination="true" uuid="d1876762-9ed2-445c-b34f-c6b017fdc963">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mariadb"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="155"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="840"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<parameter name="id_visita" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	
+        <queryString>
+		<![CDATA[SELECT v.id_visita,
+       v.id_cliente,
+       v.falla_reportada,
+       v.fecha_programada,
+       v.id_tecnico,
+       v.ingreso,
+       v.egreso,
+       v.nota,
+       c.nombre AS cliente,
+       t.nombre AS tecnico
+FROM visita v
+INNER JOIN cliente c ON c.id_cliente = v.id_cliente
+INNER JOIN tecnico t ON t.id_tecnico = v.id_tecnico
+WHERE v.id_visita = $P{id_visita}
+]]>
+	</queryString>
+
+
+
+
+
+
+
+
+    <field name="id_visita" class="java.lang.Integer"/>
+    <field name="id_cliente" class="java.lang.Integer"/>
+    <field name="falla_reportada" class="java.lang.String"/>
+    <field name="fecha_programada" class="java.lang.String"/>
+    <field name="id_tecnico" class="java.lang.Integer"/>
+    <field name="ingreso" class="java.lang.String"/>
+    <field name="egreso" class="java.lang.String"/>
+    <field name="nota" class="java.lang.String"/>
+    <field name="cliente" class="java.lang.String"/>
+    <field name="tecnico" class="java.lang.String"/>
+
+<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<rectangle>
+				<reportElement x="88" y="20" width="400" height="40" backcolor="#1FC6CC" uuid="f7cc95a0-00e0-45ed-bf7b-964a96ee8e7c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="88" y="20" width="400" height="40" forecolor="#000000" backcolor="#2088E3" uuid="4fe88182-e73b-4cf0-9c7e-e450bba8c4ff"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE VISITA A CLIENTE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="9" width="580" height="20" backcolor="#1C93E8" uuid="b836b6ac-7712-4c15-9f6b-5413c8897ee4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="10" width="70" height="20" uuid="5f2fa10b-138f-4405-94d7-39c76e982ada"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="30" width="70" height="20" uuid="1891d44d-048d-4477-bff7-fb122e554147"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="70" y="10" width="120" height="20" uuid="58a509de-367f-4828-b71b-f3fe90bc644e"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Falla reportada]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="30" width="120" height="20" uuid="8411d400-c0dd-4007-8137-8061e9d2254a"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{falla_reportada}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="190" y="10" width="70" height="20" uuid="90f7c199-7d27-48fb-8ad0-9ba336773cba"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tecnico]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="30" width="70" height="20" uuid="d519c214-79a6-468b-884d-f80b56a0bd29"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tecnico}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="10" width="60" height="20" uuid="58a509de-367f-4828-b71b-f3fe90bc644e"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Visita]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="30" width="60" height="20" uuid="8411d400-c0dd-4007-8137-8061e9d2254a"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_programada}]]></textFieldExpression>
+			</textField>                        
+			<staticText>
+				<reportElement x="320" y="10" width="45" height="20" uuid="5edeb35f-53f8-4470-8eab-cd9bd732d3fd"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ingreso]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="320" y="30" width="45" height="20" uuid="87ca785c-f914-4cb4-afe3-6fe7c50b6572"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ingreso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="365" y="10" width="45" height="20" uuid="03c1bb1e-3aeb-4946-98ac-e2a9daedf28f"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Egreso]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="365" y="30" width="45" height="20" uuid="5a417e41-f8f9-496f-88f4-38e98d3dfc52"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{egreso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="410" y="10" width="170" height="20" uuid="a3a130f6-56f8-4bfb-969a-7e8e6bad38d4"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="30" width="170" height="20" uuid="7e03078c-0d4f-4103-acc5-81666b8c9c2b"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nota}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnFooter>
+		<band height="250" splitType="Stretch">
+			<image>
+				<reportElement x="200" y="40" width="470" height="200" uuid="621ae64b-0f07-4b32-b338-def85d299ec3"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="223" splitType="Stretch">
+			<staticText>
+				<reportElement x="81" y="200" width="138" height="18" uuid="f2a56640-2aeb-4523-a454-4bd0bd8bdaa7"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte generado el día: ]]></text>
+			</staticText>
+			<textField pattern="dd, MMMMM,  yyyy">
+				<reportElement x="219" y="200" width="100" height="18" uuid="16b80048-d0a2-40d9-9af6-231479fdd4fa"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="319" y="200" width="50" height="18" uuid="69059cc1-13fd-4d3d-b8f8-ec505a1f31b2"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[a las:]]></text>
+			</staticText>
+			<textField pattern="HH:mm">
+				<reportElement x="369" y="200" width="100" height="18" uuid="5f0a5bee-88f0-4be3-b729-dec0cf519702"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="9" y="140" width="552" height="36" backcolor="#498FCC" uuid="6176d01b-eee2-444b-b48e-1980d583a9cf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="140" width="554" height="36" uuid="6d072fa5-aa82-4d82-b599-b66d0301725b"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SKYNET S.A.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
