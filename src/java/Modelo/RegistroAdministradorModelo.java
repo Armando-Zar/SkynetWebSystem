@@ -20,7 +20,7 @@ public class RegistroAdministradorModelo implements Serializable {
             Conexion conexion = new Conexion();
             Connection conn = conexion.connect();
             Statement st = conn.createStatement();
-            String sql = "insert into railway.administrador(nombre, dpi, telefono, email) "
+            String sql = "insert into skynet.administrador(nombre, dpi, telefono, email) "
                     + "values('" + admin.getNombre() + "', '" + admin.getDpi() + "', '" + admin.getTelefono() + "', "
                     + "'" + admin.getEmail() + "')";
             

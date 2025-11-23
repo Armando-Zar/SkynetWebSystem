@@ -25,7 +25,7 @@ public class RegistroSupervisorModelo implements Serializable {
             Connection conn = conexion.connect();
             Statement st = conn.createStatement();
 
-            String sql = "insert into railway.supervisor(nombre,dpi,telefono,email) "
+            String sql = "insert into skynet.supervisor(nombre,dpi,telefono,email) "
                     + "values('" + supervisor.getNombre() + "', '" + supervisor.getDpi() + "', '" 
                     + supervisor.getTelefono() + "', '" + supervisor.getEmail() + "')";
 

@@ -12,12 +12,12 @@ import java.sql.SQLException;
  */
 public class Conexion implements Serializable {
     Connection conn;
-    private String host = "caboose.proxy.rlwy.net";
-    private String port = "31799";
-    private String dbName = "railway";
-    private String userName = "root";
-    private String password = "SXMtiPdcGeEkMIXKzlIciYfbcbrFvHaW";
-    private String urlReportePdf = "http://skynetwebsystem-production.up.railway.app/SkynetWebSystem/Reportes/";
+    private String host = "localhost";
+    private String port = "3306";
+    private String dbName = "skynet";
+    private String userName = "skynetdb";
+    private String password = "skynet";
+    private String urlReportePdf = "http://localhost:31311/SkynetWebSystem/Reportes/";
 
 
     public Conexion() {

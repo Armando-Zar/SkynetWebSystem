@@ -26,7 +26,7 @@ public class RegistroClienteModelo implements Serializable{
             Conexion conexion = new Conexion();
             Connection conn = conexion.connect();
             Statement st = conn.createStatement();
-            String sql = "insert into railway.cliente(nombre,direccion,telefono,email,lat,lng)"
+            String sql = "insert into skynet.cliente(nombre,direccion,telefono,email,lat,lng)"
                     + "values('"+cliente.getNombre()+"', '"+cliente.getDireccion()+"', '"+cliente.getTelefono()+"', "
                     + "'"+cliente.getEmail()+"', '"+cliente.getLat()+"','"+cliente.getLng()+"')";
             System.out.println(sql);

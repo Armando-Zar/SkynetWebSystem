@@ -26,7 +26,7 @@ public class RegistroVisitaModelo implements Serializable{
             Conexion conexion = new Conexion();
             Connection conn = conexion.connect();
             Statement st = conn.createStatement();
-            String sql = "insert into railway.visita(id_cliente,direccion,falla_reportada,id_tecnico,id_supervisor,fecha_programada,estado,ingreso,egreso,punto_lat,punto_lng,email,nota)"
+            String sql = "insert into skynet.visita(id_cliente,direccion,falla_reportada,id_tecnico,id_supervisor,fecha_programada,estado,ingreso,egreso,punto_lat,punto_lng,email,nota)"
                     + "values('"+visita.getId_cliente()+"', '"+visita.getDireccion()+"', '"+visita.getFalla_reportada()+"', '"+visita.getId_tecnico()+"', "
                     + "'"+visita.getId_supervisor()+"', '"+visita.getFecha_programada()+"','"+visita.getEstado()+"', "
                     + "'"+visita.getIngreso()+"', '"+visita.getEgreso()+"','"+visita.getPunto_lat()+"', "
