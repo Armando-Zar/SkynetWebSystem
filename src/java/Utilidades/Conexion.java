@@ -17,7 +17,7 @@ public class Conexion implements Serializable {
     private String dbName = "railway";
     private String userName = "root";
     private String password = "SXMtiPdcGeEkMIXKzlIciYfbcbrFvHaW";
-    private String urlReportePdf = "http://caboose.proxy.rlwy.net:31799/SkynetWebSystem/Reportes/";
+    private String urlReportePdf = "http://skynetwebsystem-production.up.railway.app/SkynetWebSystem/Reportes/";
 
 
     public Conexion() {
