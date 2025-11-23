@@ -12,8 +12,8 @@ import java.sql.SQLException;
  */
 public class Conexion implements Serializable {
     Connection conn;
-    private String host = "caboose.proxy.rlwy.net";
-    private String port = "31799";
+    private String host = "localhost";
+    private String port = "3306";
     private String dbName = "railway";
     private String userName = "root";
     private String password = "SXMtiPdcGeEkMIXKzlIciYfbcbrFvHaW";
