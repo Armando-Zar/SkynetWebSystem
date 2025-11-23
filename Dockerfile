@@ -17,4 +17,4 @@ COPY dist/SkynetWebSystem.war $GLASSFISH_HOME/deployments/
 # Si tu aplicación requiere configuraciones específicas de GlassFish, debes añadirlas aquí.
 
 # 6. Comando para iniciar GlassFish (ajustado para Payara)
-CMD ["/opt/payara/bin/asadmin", "start-domain"]
+CMD ["/opt/payara/bin/start-domain"]
