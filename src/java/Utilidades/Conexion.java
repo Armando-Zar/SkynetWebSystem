@@ -14,9 +14,9 @@ public class Conexion implements Serializable {
     Connection conn;
     private String host = "localhost";
     private String port = "3306";
-    private String dbName = "skynet";
-    private String userName = "skynetdb";
-    private String password = "skynet";
+    private String dbName = "railway";
+    private String userName = "root";
+    private String password = "SXMtiPdcGeEkMIXKzlIciYfbcbrFvHaW";
     private String urlReportePdf = "http://localhost:31311/SkynetWebSystem/Reportes/";
 
 
