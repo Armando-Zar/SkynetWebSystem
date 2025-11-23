@@ -30,7 +30,7 @@ public class ConsultaVisitaModelo implements Serializable {
         try {
             Conexion conexion = new Conexion();
             Connection conn = conexion.connect();
-            String sql = "select v.id_visita, v.id_cliente, (select c.nombre from skynet.cliente c where c.id_cliente = v.id_cliente) as nombre_cliente, v.falla_reportada, v.id_tecnico, (select t.nombre from skynet.tecnico t where t.id_tecnico = v.id_tecnico) as nombre_tecnico, v.id_supervisor, (select s.nombre from skynet.supervisor s where s.id_supervisor = v.id_supervisor) as nombre_supervisor, v.fecha_programada, v.estado, (select e.descripcion from skynet.estado e where e.id_estado = v.estado) as descripcion_estado, v.ingreso, v.egreso, v.punto_lat, (select c.lat from skynet.cliente c where c.id_cliente = v.punto_lat) as latitud_cliente, v.punto_lng, (select c.lng from skynet.cliente c where c.id_cliente = v.punto_lng) as longitud_cliente, v.nota from skynet.visita v where v.id_visita = '" + id_visita + "' ";
+            String sql = "select v.id_visita, v.id_cliente, (select c.nombre from skynet.cliente c where c.id_cliente = v.id_cliente) as nombre_cliente, v.falla_reportada, v.id_tecnico, (select t.nombre from skynet.tecnico t where t.id_tecnico = v.id_tecnico) as nombre_tecnico, v.id_supervisor, (select s.nombre from skynet.supervisor s where s.id_supervisor = v.id_supervisor) as nombre_supervisor, v.fecha_programada, v.estado, (select e.descripcion from skynet.estado e where e.id_estado = v.estado) as descripcion_estado, v.ingreso, v.egreso, v.punto_lat, (select c.lat from skynet.cliente c where c.id_cliente = v.punto_lat) as latitud_cliente, v.punto_lng, (select c.lng from skynet.cliente c where c.id_cliente = v.punto_lng) as longitud_cliente, v.nota from railway.visita v where v.id_visita = '" + id_visita + "' ";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
@@ -71,7 +71,7 @@ public class ConsultaVisitaModelo implements Serializable {
         try {
             Conexion conexion = new Conexion();
             Connection conn = conexion.connect();
-            String sql = "select v.id_visita, v.id_cliente, (select c.nombre from skynet.cliente c where c.id_cliente = v.id_cliente) as nombre_cliente, v.falla_reportada, v.id_tecnico, (select t.nombre from skynet.tecnico t where t.id_tecnico = v.id_tecnico) as nombre_tecnico, v.id_supervisor, (select s.nombre from skynet.supervisor s where s.id_supervisor = v.id_supervisor) as nombre_supervisor, v.fecha_programada, v.estado, (select e.descripcion from skynet.estado e where e.id_estado = v.estado) as descripcion_estado, v.ingreso, v.egreso, v.punto_lat, (select c.lat from skynet.cliente c where c.id_cliente = v.punto_lat) as latitud_cliente, v.punto_lng, (select c.lng from skynet.cliente c where c.id_cliente = v.punto_lng) as longitud_cliente, v.nota from skynet.visita v where v.id_visita >= '1'";
+            String sql = "select v.id_visita, v.id_cliente, (select c.nombre from skynet.cliente c where c.id_cliente = v.id_cliente) as nombre_cliente, v.falla_reportada, v.id_tecnico, (select t.nombre from skynet.tecnico t where t.id_tecnico = v.id_tecnico) as nombre_tecnico, v.id_supervisor, (select s.nombre from skynet.supervisor s where s.id_supervisor = v.id_supervisor) as nombre_supervisor, v.fecha_programada, v.estado, (select e.descripcion from skynet.estado e where e.id_estado = v.estado) as descripcion_estado, v.ingreso, v.egreso, v.punto_lat, (select c.lat from skynet.cliente c where c.id_cliente = v.punto_lat) as latitud_cliente, v.punto_lng, (select c.lng from skynet.cliente c where c.id_cliente = v.punto_lng) as longitud_cliente, v.nota from railway.visita v where v.id_visita >= '1'";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
@@ -127,7 +127,7 @@ public ArrayList<Visita> consultaVisitasHoy(int idSupervisor, int idTecnico, int
                 + "v.punto_lng, "
                 + "(select c.lng from skynet.cliente c where c.id_cliente = v.punto_lng) as longitud_cliente, "
                 + "v.nota "
-                + "from skynet.visita v "
+                + "from railway.visita v "
                 + "where DATE(v.fecha_programada) = CURDATE() ";
 
         // FILTRO SEGÚN ROL
@@ -197,7 +197,7 @@ public ArrayList<Visita> consultaVisitaPorSupervisor(int idSupervisor) {
                 + "v.fecha_programada, v.estado, "
                 + "(select e.descripcion from skynet.estado e where e.id_estado = v.estado) as descripcion_estado, "
                 + "v.ingreso, v.egreso, v.punto_lat, v.punto_lng, v.nota "
-                + "from skynet.visita v "
+                + "from railway.visita v "
                 + "where v.id_supervisor = '" + idSupervisor + "' "
                 + "order by v.id_visita asc";
 
@@ -257,7 +257,7 @@ public ArrayList<Visita> consultaVisitaPorTecnico(int idTecnico) {
                 + "v.fecha_programada, v.estado, "
                 + "(select e.descripcion from skynet.estado e where e.id_estado = v.estado) as descripcion_estado, "
                 + "v.ingreso, v.egreso, v.punto_lat, v.punto_lng, v.nota "
-                + "from skynet.visita v "
+                + "from railway.visita v "
                 + "where v.id_tecnico = '" + idTecnico + "' "
                 + "order by v.id_visita asc";
 
@@ -303,7 +303,7 @@ public int obtenerIdSupervisorPorUsuario(String usuario) {
     try {
         Conexion conexion = new Conexion();
         Connection conn = conexion.connect();
-        String sql = "select id_supervisor from skynet.supervisor where usuario = '" + usuario + "'";
+        String sql = "select id_supervisor from railway.supervisor where usuario = '" + usuario + "'";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         if (rs.next()) {
@@ -324,7 +324,7 @@ public int obtenerIdTecnicoPorUsuario(String usuario) {
     try {
         Conexion conexion = new Conexion();
         Connection conn = conexion.connect();
-        String sql = "select id_tecnico from skynet.tecnico where usuario = '" + usuario + "'";
+        String sql = "select id_tecnico from railway.tecnico where usuario = '" + usuario + "'";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         if (rs.next()) {
@@ -350,7 +350,7 @@ public int obtenerIdTecnicoPorUsuario(String usuario) {
         try {
             Conexion conexion = new Conexion();
             Connection cnn = conexion.connect();
-            String sql = "update skynet.visita set id_visita = '"+vi.getId_visita()+"', id_cliente = '"+vi.getId_cliente()+"', falla_reportada = '"+vi.getFalla_reportada()+"', "
+            String sql = "update railway.visita set id_visita = '"+vi.getId_visita()+"', id_cliente = '"+vi.getId_cliente()+"', falla_reportada = '"+vi.getFalla_reportada()+"', "
                     + " id_tecnico = '"+vi.getId_tecnico()+"', id_supervisor = '"+vi.getId_supervisor()+"', fecha_programada = '"+vi.getFecha_programada()+"', "
                     + " estado = '"+vi.getEstado()+"', ingreso = '"+vi.getIngreso()+"', egreso = '"+vi.getEgreso()+"', punto_lat = '"+vi.getPunto_lat()+"', "
                     + " punto_lng = '"+vi.getPunto_lng()+"', nota = '"+vi.getNota()+"' where id_visita = '"+vi.getId_visita()+"'";

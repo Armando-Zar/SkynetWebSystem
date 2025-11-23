@@ -30,7 +30,7 @@ public class ConsultaClienteModelo implements Serializable {
         try {
             Conexion conexion = new Conexion();
             Connection conn = conexion.connect();
-            String sql = "select id_cliente,nombre,direccion,telefono,email,lat,lng,fecha_registro from skynet.cliente where id_cliente = '" + id_cliente + "' ";
+            String sql = "select id_cliente,nombre,direccion,telefono,email,lat,lng,fecha_registro from railway.cliente where id_cliente = '" + id_cliente + "' ";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
@@ -61,7 +61,7 @@ public class ConsultaClienteModelo implements Serializable {
         try {
             Conexion conexion = new Conexion();
             Connection conn = conexion.connect();
-            String sql = "select id_cliente,nombre,direccion,telefono,email,lat,lng,fecha_registro from skynet.cliente where id_cliente >= '" + 1 + "' ";
+            String sql = "select id_cliente,nombre,direccion,telefono,email,lat,lng,fecha_registro from railway.cliente where id_cliente >= '" + 1 + "' ";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
@@ -97,7 +97,7 @@ public class ConsultaClienteModelo implements Serializable {
         try {
             Conexion conexion = new Conexion();
             Connection cnn = conexion.connect();
-            String sql = "update skynet.cliente set id_cliente = '"+cl.getId_cliente()+"', nombre = '"+cl.getNombre()+"', direccion = '"+cl.getDireccion()+"', "
+            String sql = "update railway.cliente set id_cliente = '"+cl.getId_cliente()+"', nombre = '"+cl.getNombre()+"', direccion = '"+cl.getDireccion()+"', "
                     + " telefono = '"+cl.getTelefono()+"', email = '"+cl.getEmail()+"', lat = '"+cl.getLat()+"', "
                     + " lng = '"+cl.getLng()+"', fecha_registro = '"+cl.getFecha_registro()+"' where id_cliente = '"+cl.getId_cliente()+"'";
             System.out.print(sql);

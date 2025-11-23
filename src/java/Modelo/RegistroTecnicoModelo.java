@@ -25,7 +25,7 @@ public class RegistroTecnicoModelo implements Serializable {
             Connection conn = conexion.connect();
             Statement st = conn.createStatement();
 
-            String sql = "insert into skynet.tecnico(nombre, dpi, telefono, email, id_supervisor) "
+            String sql = "insert into railway.tecnico(nombre, dpi, telefono, email, id_supervisor) "
                     + "values('" + tecnico.getNombre() + "', '" + tecnico.getDpi() + "', '" 
                     + tecnico.getTelefono() + "', '" + tecnico.getEmail() + "', "
                     + tecnico.getId_supervisor()+ ")";

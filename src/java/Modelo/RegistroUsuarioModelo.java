@@ -20,7 +20,7 @@ public class RegistroUsuarioModelo implements Serializable {
             Connection conn = conexion.connect();
             Statement st = conn.createStatement();
 
-            String sql = "insert into skynet.usuario(login_name, password, id_rol, id_supervisor, id_tecnico, estado) "
+            String sql = "insert into railway.usuario(login_name, password, id_rol, id_supervisor, id_tecnico, estado) "
                     + "values('" + usuario.getLogin_name() + "', '" + usuario.getPassword() + "', "
                     + usuario.getId_rol() + ", " + usuario.getId_supervisor() + ", "
                     + usuario.getId_tecnico() + ", '" + usuario.getEstado() + "')";
